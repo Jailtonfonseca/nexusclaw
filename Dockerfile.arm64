@@ -1,0 +1,53 @@
+# Nexus-AI - Dockerfile Otimizado para ARM64 (Orange Pi)
+# Versão leve com apenas dependências essenciais
+
+FROM python:3.11-slim
+
+# Variáveis de ambiente
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Labels
+LABEL maintainer="Nexus-AI Team"
+LABEL description="Nexus-AI Otimizado para Orange Pi ARM64"
+
+# Instalação de dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    libpq-dev \
+    # Dependências para NLP
+    libsentencepiece-dev \
+    libprotobuf-dev \
+    protobuf-compiler \
+    # Utilitários
+    vim \
+    htop \
+    && rm -rf /var/lib/apt/lists/*
+
+# Diretório de trabalho
+WORKDIR /app
+
+# Copia dependências primeiro (cache)
+COPY requirements.txt .
+
+# Instala dependências Python (versões leves)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia código fonte
+COPY . .
+
+# Cria diretórios necessários
+RUN mkdir -p /app/data /app/skills /app/config
+
+# Porta
+EXPOSE 8000
+
+#Script de inicialização otimizado
+COPY docker/entrypoint.arm64.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["python", "main.py"]

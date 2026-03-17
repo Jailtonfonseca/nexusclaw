@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+  # Core API do NexusClaw
+  nexus-ai:
+    build: .
+    container_name: nexus-ai
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./skills:/app/skills
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DATABASE_URL=postgresql://nexus:nexus@postgres:5432/nexusai
+      - REDIS_URL=redis://redis:6379
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - QDRANT_HOST=qdrant
+    depends_on:
+      - postgres
+      - redis
+      - ollama
+      - qdrant
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+  # Banco de dados PostgreSQL
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: nexus-postgres
+    environment:
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: nexus
+      POSTGRES_DB: nexusai
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+  # Cache e Filas
+  redis:
+    image: redis:7-alpine
+    container_name: nexus-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+  # Modelo de LLM Local
+  ollama:
+    image: ollama/ollama:latest
+    container_name: nexus-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - nexus-network
+    deploy:
+      resources:
+        limits:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # Banco de vectores para memória semântica
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: nexus-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+  # Busca privada na web
+  searxng:
+    image: searxng/searxng:latest
+    container_name: nexus-searxng
+    ports:
+      - "8080:8080"
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080
+    volumes:
+      - searxng-config:/etc/searxng
+    restart: unless-stopped
+    networks:
+      - nexus-network
+
+volumes:
+  postgres-data:
+  redis-data:
+  ollama-data:
+  qdrant-data:
+  searxng-config:
+
+networks:
+  nexus-network:
+    driver: bridge

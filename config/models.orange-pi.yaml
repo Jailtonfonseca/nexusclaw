@@ -1,0 +1,48 @@
+# Modelos Otimizados para Orange Pi 3B (8GB RAM)
+# ============================================
+
+# Modelos LLM - Escolha apenas UM
+# Ph3.5 Mini: ~3.8GB, ~8-12 tok/s, boa qualidade
+OLLAMA_MODEL=phi3:mini
+
+# Alternativas (descomente para usar):
+# OLLAMA_MODEL=tinyllama        # ~1GB, ~20 tok/s, qualidade básica
+# OLLAMA_MODEL=gemma:1b          # ~2GB, ~15 tok/s, boa qualidade
+# OLLAMA_MODEL=deepseek-coder:1.3b  # ~2.6GB, ~10 tok/s, código
+
+# Configurações de performance
+# ============================================
+
+# Reduz contexto para usar menos RAM
+OLLAMA_CONTEXT_WINDOW=2048
+OLLAMA_NUM_THREADS=4
+
+# Desabilita features que usam mais memória
+OLLAMA_FLASH_ATTENTION=0
+
+# Memória
+# ============================================
+
+# Quantidade máxima de workers (mantenha baixo)
+MAX_WORKERS=2
+
+# Limite de memória para cache
+REDIS_MAXMEMORY=256mb
+REDIS_MAXMEMORY_POLICY=allkeys-lru
+
+# Embedding - Modelo leve
+# ============================================
+EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+EMBEDDING_DEVICE=cpu
+
+# Canais de comunicação
+# ============================================
+
+# Escolha apenas um canal para melhor performance
+# TELEGRAM_BOT_TOKEN=seu_token_aqui
+# DISCORD_BOT_TOKEN=
+
+# Recursos avançados (desabilitados para performance)
+# ============================================
+ENABLE_AUTONOMOUS_MODE=false
+MAX_PARALLEL_TASKS=1

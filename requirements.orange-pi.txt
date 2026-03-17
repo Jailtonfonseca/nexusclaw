@@ -1,0 +1,36 @@
+# NexusClaw Dependencies - Versão Leve para Orange Pi
+# Otimizado para 8GB RAM
+
+# Framework principal (versões minimal)
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+pydantic==2.6.1
+pydantic-settings==2.1.0
+
+# Orquestração leve
+httpx==0.26.0
+python-dotenv==1.0.1
+
+# Banco de dados leve (SQLite)
+sqlalchemy==2.0.25
+
+# Cache (minimal)
+redis==5.0.1
+
+# LLM
+openai==1.12.0
+
+# Canais de comunicação (apenas os mais importantes)
+aiogram==3.4.1
+
+# Utilitários essenciais
+python-multipart==0.0.9
+aiofiles==23.2.1
+pyyaml==6.0.1
+
+# Segurança
+cryptography==42.0.5
+
+# Desenvolvimento
+pytest==8.0.0
+pytest-asyncio==0.23.4

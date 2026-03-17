@@ -1,0 +1,26 @@
+# NexusClaw - Versão Ultra-Leve para Orange Pi
+# Sem Docker, execução direta
+
+version: '3.8'
+
+services:
+  # Apenas Ollama (sem containers pesados)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: nexus-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    network_mode: host
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+
+  # NexusClaw direto no host (sem container)
+  # Execute via script em vez de container
+
+volumes:
+  ollama-data:

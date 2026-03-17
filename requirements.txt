@@ -1,0 +1,63 @@
+# NexusClaw Dependencies
+# Framework principal
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+pydantic==2.6.1
+pydantic-settings==2.1.0
+
+# Orquestração e Agentes
+httpx==0.26.0
+aiohttp==3.9.3
+python-dotenv==1.0.1
+
+# Banco de dados
+sqlalchemy==2.0.25
+asyncpg==0.29.0
+alembic==1.13.1
+pgvector==0.2.3
+
+# Memória e Embeddings
+qdrant-client==1.7.4
+sentence-transformers==2.4.0
+numpy==1.26.4
+
+# Cache e Filas
+redis==5.0.1
+celery==5.3.6
+
+# Integração com LLMs
+openai==1.12.0
+anthropic==0.18.0
+
+# Canais de comunicação
+aiogram==3.4.1
+discord.py==2.3.2
+python-telegram-bot==21.1.1
+twilio==8.11.0
+
+# Utilitários
+python-multipart==0.0.9
+aiofiles==23.2.1
+watchdog==4.0.0
+jinja2==3.1.3
+markdown==3.5.2
+pyyaml==6.0.1
+tiktoken==0.5.2
+
+# Segurança
+cryptography==42.0.5
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.1.2
+
+# Web e Monitoring
+streamlit==1.31.0
+plotly==5.20.0
+prometheus-client==0.19.0
+
+# Desenvolvimento
+pytest==8.0.0
+pytest-asyncio==0.23.4
+black==24.1.1
+ruff==0.2.2
+mypy==1.8.0

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#667eea"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad2)"/>
+
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#667eea" text-anchor="middle">Fluxo de Processamento de Mensagens</text>
+
+  <!-- Start -->
+  <circle cx="100" cy="80" r="25" fill="#48bb78" stroke="#2f855a" stroke-width="3"/>
+  <text x="100" y="85" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">INÍCIO</text>
+
+  <!-- Step 1: Message Received -->
+  <rect x="50" y="130" width="140" height="50" rx="8" fill="#4a5568" stroke="#667eea" stroke-width="2"/>
+  <text x="120" y="155" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Mensagem</text>
+  <text x="120" y="170" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Recebida</text>
+
+  <!-- Step 2: Channel Adapter -->
+  <rect x="230" y="130" width="140" height="50" rx="8" fill="#4a5568" stroke="#ed8936" stroke-width="2"/>
+  <text x="300" y="155" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Adaptador de</text>
+  <text x="300" y="170" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Canal</text>
+
+  <!-- Step 3: Memory Check -->
+  <rect x="410" y="130" width="140" height="50" rx="8" fill="#4a5568" stroke="#48bb78" stroke-width="2"/>
+  <text x="480" y="155" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Verificar</text>
+  <text x="480" y="170" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Memória</text>
+
+  <!-- Step 4: Deep Thinking -->
+  <rect x="230" y="220" width="140" height="50" rx="8" fill="#4a5568" stroke="#9f7aea" stroke-width="2"/>
+  <text x="300" y="245" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Pensamento</text>
+  <text x="300" y="260" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Profundo</text>
+
+  <!-- Step 5: Agent Processing -->
+  <rect x="410" y="220" width="140" height="50" rx="8" fill="#4a5568" stroke="#667eea" stroke-width="2"/>
+  <text x="480" y="245" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Processamento</text>
+  <text x="480" y="260" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">do Agente</text>
+
+  <!-- Step 6: Skills Execution -->
+  <rect x="590" y="220" width="140" height="50" rx="8" fill="#4a5568" stroke="#f56565" stroke-width="2"/>
+  <text x="660" y="245" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Execução de</text>
+  <text x="660" y="260" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Habilidades</text>
+
+  <!-- Step 7: Self-Reflection -->
+  <rect x="410" y="310" width="140" height="50" rx="8" fill="#4a5568" stroke="#48bb78" stroke-width="2"/>
+  <text x="480" y="335" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Auto-</text>
+  <text x="480" y="350" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Reflexão</text>
+
+  <!-- Step 8: Save Memory -->
+  <rect x="230" y="310" width="140" height="50" rx="8" fill="#4a5568" stroke="#ed8936" stroke-width="2"/>
+  <text x="300" y="335" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Salvar na</text>
+  <text x="300" y="350" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Memória</text>
+
+  <!-- Step 9: Generate Response -->
+  <rect x="410" y="400" width="140" height="50" rx="8" fill="#4a5568" stroke="#667eea" stroke-width="2"/>
+  <text x="480" y="425" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Gerar</text>
+  <text x="480" y="440" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Resposta</text>
+
+  <!-- End -->
+  <circle cx="480" cy="480" r="25" fill="#f56565" stroke="#c53030" stroke-width="3"/>
+  <text x="480" y="485" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">FIM</text>
+
+  <!-- Arrows -->
+  <line x1="100" y1="105" x2="100" y2="130" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="190" y1="155" x2="230" y2="155" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="370" y1="155" x2="410" y2="155" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="480" y1="180" x2="480" y2="220" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="370" y1="245" x2="410" y2="245" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="550" y1="245" x2="590" y2="245" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="660" y1="270" x2="660" y2="310" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="660" y1="310" x2="550" y2="335" stroke="#667eea" stroke-width="2"/>
+  <line x1="480" y1="360" x2="350" y2="335" stroke="#667eea" stroke-width="2"/>
+  <line x1="300" y1="360" x2="300" y2="400" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="300" y1="310" x2="410" y2="400" stroke="#667eea" stroke-width="2"/>
+  <line x1="480" y1="450" x2="480" y2="455" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Decision Diamond -->
+  <polygon points="620,130 680,155 620,180 560,155" fill="#4a5568" stroke="#667eea" stroke-width="2"/>
+  <text x="620" y="150" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Precisa</text>
+  <text x="620" y="165" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Tools?</text>
+  <line x1="550" y1="155" x2="560" y2="155" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="620" y1="180" x2="620" y2="220" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Version -->
+  <text x="750" y="490" font-family="Arial, sans-serif" font-size="10" fill="#718096" text-anchor="end">NexusClaw v1.0.0</text>
+</svg>

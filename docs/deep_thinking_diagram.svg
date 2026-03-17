@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad3)"/>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#9f7aea" text-anchor="middle">Sistema de Pensamento Profundo</text>
+
+  <!-- Depth Levels -->
+  <!-- Level 1: Surface -->
+  <rect x="30" y="60" width="180" height="80" rx="10" fill="#2d3748" stroke="#718096" stroke-width="2"/>
+  <text x="120" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#718096" text-anchor="middle">🟢 NÍVEL 1</text>
+  <text x="120" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">SUPERFICIAL</text>
+  <text x="120" y="125" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Resposta direta</text>
+
+  <!-- Level 2: Medium -->
+  <rect x="230" y="60" width="180" height="80" rx="10" fill="#2d3748" stroke="#667eea" stroke-width="2"/>
+  <text x="320" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#667eea" text-anchor="middle">🔵 NÍVEL 2</text>
+  <text x="320" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">MÉDIO</text>
+  <text x="320" y="125" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Análise básica</text>
+
+  <!-- Level 3: Deep -->
+  <rect x="430" y="60" width="180" height="80" rx="10" fill="#2d3748" stroke="#ed8936" stroke-width="2"/>
+  <text x="520" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ed8936" text-anchor="middle">🟠 NÍVEL 3</text>
+  <text x="520" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">PROFUNDO</text>
+  <text x="520" y="125" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Raciocínio iterativo</text>
+
+  <!-- Level 4: Comprehensive -->
+  <rect x="630" y="60" width="140" height="80" rx="10" fill="#2d3748" stroke="#9f7aea" stroke-width="3"/>
+  <text x="700" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#9f7aea" text-anchor="middle">🟣 NÍVEL 4</text>
+  <text x="700" y="105" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">COMPREENSIVO</text>
+  <text x="700" y="125" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0" text-anchor="middle">Metacognição</text>
+
+  <!-- Process Flow -->
+  <text x="400" y="170" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">Fluxo do Processo de Pensamento</text>
+
+  <!-- Steps -->
+  <g transform="translate(30, 190)">
+    <!-- Step 1 -->
+    <circle cx="30" cy="30" r="25" fill="#667eea"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Observação</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Entender</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">problema</text>
+  </g>
+
+  <g transform="translate(140, 190)">
+    <!-- Arrow -->
+    <line x1="0" y1="30" x2="30" y2="30" stroke="#667eea" stroke-width="2"/>
+    <polygon points="25,25 35,30 25,35" fill="#667eea"/>
+  </g>
+
+  <g transform="translate(170, 190)">
+    <!-- Step 2 -->
+    <circle cx="30" cy="30" r="25" fill="#48bb78"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Análise</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Decompor</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">componentes</text>
+  </g>
+
+  <g transform="translate(280, 190)">
+    <!-- Arrow -->
+    <line x1="0" y1="30" x2="30" y2="30" stroke="#48bb78" stroke-width="2"/>
+    <polygon points="25,25 35,30 25,35" fill="#48bb78"/>
+  </g>
+
+  <g transform="translate(310, 190)">
+    <!-- Step 3 -->
+    <circle cx="30" cy="30" r="25" fill="#ed8936"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Hipóteses</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Gerar</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">alternativas</text>
+  </g>
+
+  <g transform="translate(420, 190)">
+    <!-- Arrow -->
+    <line x1="0" y1="30" x2="30" y2="30" stroke="#ed8936" stroke-width="2"/>
+    <polygon points="25,25 35,30 25,35" fill="#ed8936"/>
+  </g>
+
+  <g transform="translate(450, 190)">
+    <!-- Step 4 -->
+    <circle cx="30" cy="30" r="25" fill="#f56565"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Raciocínio</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Avaliar</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">opções</text>
+  </g>
+
+  <g transform="translate(560, 190)">
+    <!-- Arrow -->
+    <line x1="0" y1="30" x2="30" y2="30" stroke="#f56565" stroke-width="2"/>
+    <polygon points="25,25 35,30 25,35" fill="#f56565"/>
+  </g>
+
+  <g transform="translate(590, 190)">
+    <!-- Step 5 -->
+    <circle cx="30" cy="30" r="25" fill="#9f7aea"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Decisão</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Escolher</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">abordagem</text>
+  </g>
+
+  <g transform="translate(680, 190)">
+    <!-- Arrow -->
+    <line x1="0" y1="30" x2="30" y2="30" stroke="#9f7aea" stroke-width="2"/>
+    <polygon points="25,25 35,30 25,35" fill="#9f7aea"/>
+  </g>
+
+  <g transform="translate(710, 190)">
+    <!-- Step 6 -->
+    <circle cx="30" cy="30" r="25" fill="#667eea"/>
+    <text x="30" y="35" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">6</text>
+    <text x="30" y="70" font-family="Arial, sans-serif" font-size="11" fill="#fff" text-anchor="middle">Verificação</text>
+    <text x="30" y="85" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Validar</text>
+    <text x="30" y="98" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">resultado</text>
+  </g>
+
+  <!-- Self-Reflection Box -->
+  <rect x="30" y="320" width="740" height="110" rx="10" fill="#2d3748" stroke="#48bb78" stroke-width="2"/>
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#48bb78" text-anchor="middle">Sistema de Auto-Reflexão</text>
+
+  <!-- Reflection Dimensions -->
+  <g transform="translate(60, 370)">
+    <rect x="0" y="0" width="130" height="45" rx="5" fill="#4a5568"/>
+    <text x="65" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Precisão</text>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Informação correta?</text>
+  </g>
+
+  <g transform="translate(200, 370)">
+    <rect x="0" y="0" width="130" height="45" rx="5" fill="#4a5568"/>
+    <text x="65" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Completude</text>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Cobre todos aspectos?</text>
+  </g>
+
+  <g transform="translate(340, 370)">
+    <rect x="0" y="0" width="130" height="45" rx="5" fill="#4a5568"/>
+    <text x="65" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Clareza</text>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Fácil de entender?</text>
+  </g>
+
+  <g transform="translate(480, 370)">
+    <rect x="0" y="0" width="130" height="45" rx="5" fill="#4a5568"/>
+    <text x="65" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Relevância</text>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Responde à pergunta?</text>
+  </g>
+
+  <g transform="translate(620, 370)">
+    <rect x="0" y="0" width="130" height="45" rx="5" fill="#4a5568"/>
+    <text x="65" y="20" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">Tom</text>
+    <text x="65" y="35" font-family="Arial, sans-serif" font-size="9" fill="#a0aec0" text-anchor="middle">Tom apropriado?</text>
+  </g>
+
+  <!-- Version -->
+  <text x="750" y="440" font-family="Arial, sans-serif" font-size="10" fill="#718096" text-anchor="end">NexusClaw v1.0.0</text>
+</svg>
