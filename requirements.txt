@@ -17,9 +17,9 @@ alembic==1.13.1
 pgvector==0.2.3
 
 # Memória e Embeddings
-qdrant-client==1.7.4
+qdrant-client==1.7.3
 sentence-transformers==2.4.0
-numpy==1.26.4
+numpy>=1.26.4
 
 # Cache e Filas
 redis==5.0.1

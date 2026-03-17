@@ -6,18 +6,15 @@ Este módulo implementa capacidades de auto-análise do código
 e sugestão proativa de novas funcionalidades aos usuários.
 """
 
-import asyncio
-import json
 import logging
 import inspect
 import ast
-from typing import Dict, Any, List, Optional, Callable
-from datetime import datetime, timedelta
+from typing import Dict, Any, List, Optional
+from datetime import datetime
 from dataclasses import dataclass, field
 from pathlib import Path
 from collections import defaultdict
 
-from config.settings import get_settings
 
 
 logger = logging.getLogger(__name__)
@@ -318,7 +315,7 @@ class FeatureSuggester:
                         id=f"enhance_{skill}",
                         type="code_improvement",
                         title=f"Melhorar skill '{skill}'",
-                        description=f"Otimizar e expandir capabilities da skill",
+                        description="Otimizar e expandir capabilities da skill",
                         justification=f"Usada {usage} vezes - é uma skill core",
                         priority=4,
                         effort="medium",
@@ -690,15 +687,22 @@ class CalendarSkill(BaseSkill):
         return snippets.get(key)
 
 
-def create_code_evolution_system(improvement_engine: Any) -> Dict[str, Any]:
+@dataclass
+class CodeEvolutionSystem:
+    """Sistema completo de evolução de código"""
+    code_analyzer: CodeAnalyzer
+    feature_suggester: FeatureSuggester
+    evolution_advisor: CodeEvolutionAdvisor
+
+def create_code_evolution_system(improvement_engine: Any) -> CodeEvolutionSystem:
     """Cria e retorna o sistema completo de evolução de código"""
     
     code_analyzer = CodeAnalyzer()
     feature_suggester = FeatureSuggester(improvement_engine)
     evolution_advisor = CodeEvolutionAdvisor(code_analyzer, feature_suggester)
     
-    return {
-        "code_analyzer": code_analyzer,
-        "feature_suggester": feature_suggester,
-        "evolution_advisor": evolution_advisor
-    }
+    return CodeEvolutionSystem(
+        code_analyzer=code_analyzer,
+        feature_suggester=feature_suggester,
+        evolution_advisor=evolution_advisor
+    )

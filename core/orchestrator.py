@@ -9,9 +9,9 @@ e o调度 de operações do assistente.
 import asyncio
 import json
 import logging
-from typing import List, Dict, Any, Optional, Callable
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime
 from enum import Enum
 
 from config.settings import get_settings

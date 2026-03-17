@@ -6,14 +6,12 @@ Este módulo implementa o sistema de memória do assistente,
 incluindo memória episódica, memória de fatos e contexto.
 """
 
-import asyncio
 import json
 import logging
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 from dataclasses import dataclass, field
 
-import numpy as np
 
 from config.settings import get_settings
 

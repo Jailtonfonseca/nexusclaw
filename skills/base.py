@@ -333,7 +333,6 @@ class CodeExecutionSkill(BaseSkill):
     async def _execute_python(self, code: str, timeout: int) -> Dict[str, Any]:
         """Executa código Python"""
         import io
-        import sys
         import contextlib
         
         stdout = io.StringIO()

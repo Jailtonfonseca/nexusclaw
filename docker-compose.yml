@@ -62,13 +62,13 @@ services:
     restart: unless-stopped
     networks:
       - nexus-network
-    deploy:
-      resources:
-        limits:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    # deploy:
+    #   resources:
+    #     limits:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
 
   # Banco de vectores para memória semântica
   qdrant:

@@ -11,7 +11,7 @@ import json
 import logging
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Dict, Any, Callable, Awaitable
+from typing import Dict, Any
 
 from config.settings import get_settings
 
@@ -54,7 +54,7 @@ class BaseAdapter(ABC):
         message: str
     ) -> str:
         """Processa uma mensagem recebida"""
-        from core.agent import Message, ConversationContext
+        from core.agent import Message
         
         # Obtém ou cria contexto
         context = self.agent.get_or_create_context(user_id, channel)
@@ -95,7 +95,6 @@ class TelegramAdapter(BaseAdapter):
         # Inicializa cliente (aiogram)
         from aiogram import Bot, Dispatcher
         from aiogram.filters import Command
-        from aiogram.types import Message as TgMessage
         
         self.bot = Bot(token=self.settings.telegram_bot_token)
         self.dp = Dispatcher()
@@ -133,7 +132,7 @@ class TelegramAdapter(BaseAdapter):
         await bot.send_message(chat_id=int(user_id), text=message)
         await bot.session.close()
     
-    async def _handle_start(self, event: TgMessage):
+    async def _handle_start(self, event: Any):
         """Handler para comando /start"""
         await event.answer(
             "Olá! Eu sou o NexusClaw, seu assistente de IA pessoal.\n\n"
@@ -145,7 +144,7 @@ class TelegramAdapter(BaseAdapter):
             "Apenas me envie uma mensagem!"
         )
     
-    async def _handle_help(self, event: TgMessage):
+    async def _handle_help(self, event: Any):
         """Handler para comando /help"""
         await event.answer(
             "Comandos disponíveis:\n"
@@ -156,7 +155,7 @@ class TelegramAdapter(BaseAdapter):
             "/clear - Limpar conversa atual"
         )
     
-    async def _handle_memory(self, event: TgMessage):
+    async def _handle_memory(self, event: Any):
         """Handler para comando /remember"""
         if not self.agent.memory_system:
             await event.answer("Sistema de memória não disponível")
@@ -176,7 +175,7 @@ class TelegramAdapter(BaseAdapter):
         
         await event.answer(f"Salvo: {fact}")
     
-    async def _handle_search(self, event: TgMessage):
+    async def _handle_search(self, event: Any):
         """Handler para comando /search"""
         if not self.agent.memory_system:
             await event.answer("Sistema de memória não disponível")
@@ -198,7 +197,7 @@ class TelegramAdapter(BaseAdapter):
         else:
             await event.answer("Nenhum resultado encontrado")
     
-    async def _handle_message(self, event: TgMessage):
+    async def _handle_message(self, event: Any):
         """Handler para mensagens normais"""
         user_id = str(event.from_user.id)
         message = event.text
@@ -265,7 +264,6 @@ class DiscordAdapter(BaseAdapter):
         **kwargs
     ):
         """Envia mensagem via Discord"""
-        import discord
         
         if not hasattr(self, 'client'):
             return

@@ -11,10 +11,9 @@ import asyncio
 import json
 import logging
 import time
-from typing import Dict, Any, List, Optional, Callable
-from datetime import datetime, timedelta
+from typing import Dict, Any, List, Optional
+from datetime import datetime
 from dataclasses import dataclass, field
-from collections import defaultdict
 from enum import Enum
 
 from config.settings import get_settings
@@ -27,6 +26,7 @@ class FeedbackType(Enum):
     """Tipos de feedback do sistema"""
     EXPLICIT_THUMB = "thumb"           # 👍/👎
     EXPLICIT_RATING = "rating"        # 1-5 estrelas
+    EXPLICIT_TEXT = "text"            # Feedback descritivo transcrito
     IMPLICIT_SUCCESS = "success"       # Ação completada com sucesso
     IMPLICIT_FAILURE = "failure"       # Ação falhou
     CONTEXT_REUSE = "context_reuse"    # Usuário buscou contexto similar

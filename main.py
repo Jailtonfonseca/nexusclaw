@@ -6,13 +6,10 @@ Este módulo inicializa e coordena todos os componentes
 do NexusClaw.
 """
 
-import asyncio
 import logging
-import signal
 import sys
 from contextlib import asynccontextmanager
 from datetime import datetime
-from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,15 +18,11 @@ from config.settings import get_settings
 from core.agent import NexusAgent
 from core.memory import MemorySystem
 from core.orchestrator import TaskOrchestrator
-from core.self_improvement import SelfImprovementEngine, EvolutionEngine, register_self_improvement
+from core.self_improvement import EvolutionEngine, register_self_improvement
 from core.code_evolution import create_code_evolution_system
 from core.deep_thinking import (
     create_deep_thinking_agent,
-    ReasoningDepth,
-    ChainOfThought,
-    SelfReflector,
-    AutonomousPlanner,
-    DeepThinkingAgent
+    ReasoningDepth
 )
 from adapters.base import ADAPTERS
 from skills import get_skills_registry
@@ -338,12 +331,20 @@ def create_app() -> FastAPI:
             return {"error": "Motor de auto-aperiçoamento não disponível"}
         
         interaction_id = request.get("interaction_id")
-        feedback_type = request.get("feedback_type", "thumb")
+        feedback_raw = request.get("feedback_type", "thumb")
         value = request.get("value", "up")
         reason = request.get("reason")
         
         from core.self_improvement import FeedbackType
-        fb_type = FeedbackType.EXPLICIT_THUMB
+        
+        # Converte string para enum para evitar erros do Ruff sobre unused variables
+        # sem quebrar a funcionalidade de parsear o input
+        fb_type_map = {
+            "thumb": FeedbackType.EXPLICIT_THUMB,
+            "rating": FeedbackType.EXPLICIT_RATING,
+            "text": FeedbackType.EXPLICIT_TEXT
+        }
+        fb_type = fb_type_map.get(feedback_raw, FeedbackType.EXPLICIT_THUMB)
         
         await app_instance.improvement_engine.record_feedback(
             interaction_id=interaction_id,
@@ -391,7 +392,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de análise de código não disponível"}
         
-        analysis = await app_instance.code_evolution["code_analyzer"].analyze_all()
+        analysis = await app_instance.code_evolution.code_analyzer.analyze_all()
         
         return {
             "modules": {
@@ -408,7 +409,7 @@ def create_app() -> FastAPI:
                 }
                 for name, a in analysis.items()
             },
-            "critical_issues": app_instance.code_evolution["code_analyzer"].get_critical_issues(),
+            "critical_issues": app_instance.code_evolution.code_analyzer.get_critical_issues(),
             "summary": {
                 "total_modules": len(analysis),
                 "total_issues": sum(len(a.issues) for a in analysis.values()),
@@ -422,7 +423,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de análise de código não disponível"}
         
-        improvements = app_instance.code_evolution["code_analyzer"].generate_improvement_plan()
+        improvements = app_instance.code_evolution.code_analyzer.generate_improvement_plan()
         
         return {
             "improvements": [
@@ -445,7 +446,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de evolução de código não disponível"}
         
-        recommendations = await app_instance.code_evolution["evolution_advisor"].generate_technical_recommendations()
+        recommendations = await app_instance.code_evolution.evolution_advisor.generate_technical_recommendations()
         
         return recommendations
     
@@ -455,7 +456,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de evolução de código não disponível"}
         
-        priorities = app_instance.code_evolution["evolution_advisor"].prioritize_developer_work()
+        priorities = app_instance.code_evolution.evolution_advisor.prioritize_developer_work()
         
         return {
             "priorities": priorities,
@@ -470,7 +471,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de sugestão não disponível"}
         
-        suggestions = await app_instance.code_evolution["feature_suggester"].analyze_usage_patterns()
+        suggestions = await app_instance.code_evolution.feature_suggester.analyze_usage_patterns()
         
         return {
             "suggestions": [
@@ -495,7 +496,7 @@ def create_app() -> FastAPI:
         if not app_instance or not app_instance.code_evolution:
             return {"error": "Sistema de sugestão não disponível"}
         
-        suggestions = await app_instance.code_evolution["feature_suggester"].suggest_to_user(user_id)
+        suggestions = await app_instance.code_evolution.feature_suggester.suggest_to_user(user_id)
         
         return {
             "user_id": user_id,
@@ -522,7 +523,7 @@ def create_app() -> FastAPI:
             user_requested=True
         )
         
-        request_id = app_instance.code_evolution["feature_suggester"].add_user_request(feature_request)
+        request_id = app_instance.code_evolution.feature_suggester.add_user_request(feature_request)
         
         return {
             "success": True,
@@ -550,7 +551,7 @@ def create_app() -> FastAPI:
             impact="medium"
         )
         
-        code_snippet = app_instance.code_evolution["evolution_advisor"].generate_code_snippet_suggestion(temp_request)
+        code_snippet = app_instance.code_evolution.evolution_advisor.generate_code_snippet_suggestion(temp_request)
         
         if code_snippet:
             return {

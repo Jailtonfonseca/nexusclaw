@@ -7,7 +7,6 @@ para usar o NexusClaw via terminal.
 """
 
 import asyncio
-import sys
 import logging
 from typing import Optional
 

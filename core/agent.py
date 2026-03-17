@@ -10,7 +10,7 @@ e coordenar habilidades.
 import asyncio
 import json
 import logging
-from typing import List, Dict, Any, Optional, Callable
+from typing import List, Dict, Any, Callable
 from datetime import datetime
 from dataclasses import dataclass, field
 

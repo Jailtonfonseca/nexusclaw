@@ -7,10 +7,9 @@ permitindo ao assistente pensar profundamente, refletir sobre
 suas decisões e operar de forma verdadeiramente autônoma.
 """
 
-import asyncio
 import json
 import logging
-from typing import Dict, Any, List, Optional, Callable
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 from dataclasses import dataclass, field
 from enum import Enum
@@ -314,7 +313,7 @@ Para cada uma, considere:
                 max_tokens=600
             )
             return response.get("content", "")
-        except Exception as e:
+        except Exception:
             return f"Hipótese: Resolver {task}"
     
     async def _deep_reason(
@@ -356,7 +355,7 @@ Pense passo a passo.
             
             return content
             
-        except Exception as e:
+        except Exception:
             return "Continuando análise..."
     
     async def _make_decision(self, chain: ReasoningChain) -> str:
@@ -387,7 +386,7 @@ Escolha uma abordagem e justifique:
                 max_tokens=300
             )
             return response.get("content", "")
-        except Exception as e:
+        except Exception:
             return "Decisão: Prosseguir com a solução mais direta"
     
     async def _verify_decision(self, decision: Thought, task: str) -> str:
@@ -415,7 +414,7 @@ Forneça uma verificação completa.
                 max_tokens=300
             )
             return response.get("content", "")
-        except Exception as e:
+        except Exception:
             return "Verificação: Parece adequado"
     
     async def _reflect_on_chain(self, chain: ReasoningChain) -> str:
@@ -442,7 +441,7 @@ Reflita:
                 max_tokens=400
             )
             return response.get("content", "")
-        except Exception as e:
+        except Exception:
             return "Reflexão: Processo de pensamento concluído"
     
     async def _extract_lessons(self, chain: ReasoningChain) -> List[str]:
@@ -582,7 +581,7 @@ Mantenha o mesmo tom e estilo.
                 max_tokens=500
             )
             return response.get("content", "")
-        except Exception as e:
+        except Exception:
             return ""
     
     def _format_context(self, context: List[Dict[str, str]] = None) -> str:
@@ -731,7 +730,7 @@ Determine:
                 max_tokens=400
             )
             return response.get("content", "")
-        except:
+        except Exception:
             return f"Objetivo: {goal}"
     
     async def _decompose_goal(
@@ -918,7 +917,7 @@ Como você pode recuperar esta situação?
             # Se gerou sugestão, adiciona ao plano
             return len(response.get("content", "")) > 10
             
-        except:
+        except Exception:
             return False
     
     async def _verify_plan_results(self, plan: Dict) -> str:
@@ -1058,10 +1057,10 @@ Contexto: {self._format_context(context)}
         # Crenças simples baseadas em padrões
         if "sou" in prompt or "meu nome" in prompt:
             # Usuário se apresentou
-            pass
-        
-        if "sempre" in prompt or "nunca" in prompt:
-            # Crença sobre padrões
+            self.state.beliefs["user_introduced"] = True
+            
+        if any(keyword in words for keyword in ["sempre", "nunca", "jamais", "todos"]):
+            # Crença sobre padrões e absolutismos
             self.state.beliefs["pattern_detected"] = True
     
     async def autonomous_task(
