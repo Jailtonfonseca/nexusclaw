@@ -16,22 +16,18 @@ LABEL description="Nexus-AI Otimizado para Orange Pi ARM64"
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
-    git \
     libpq-dev \
     # Dependências para NLP
     libsentencepiece-dev \
     libprotobuf-dev \
     protobuf-compiler \
-    # Utilitários
-    vim \
-    htop \
     && rm -rf /var/lib/apt/lists/*
 
 # Diretório de trabalho
 WORKDIR /app
 
 # Copia dependências primeiro (cache)
-COPY requirements.txt .
+COPY requirements.orange-pi.txt requirements.txt
 
 # Instala dependências Python (versões leves)
 RUN pip install --no-cache-dir -r requirements.txt

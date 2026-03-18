@@ -48,7 +48,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 2G
+          memory: 3G
         reservations:
           memory: 1G
           cpus: '2.0'
@@ -97,7 +97,7 @@ services:
       - "6334:6334"
     environment:
       - QDRANT_STORAGE__RAM__ACCESS__ENABLED=true
-      - QDRANT_STORAGE__DISK__ENABLED=false
+      - QDRANT_STORAGE__DISK__ENABLED=true
     volumes:
       - qdrant-data:/qdrant/storage
     restart: unless-stopped

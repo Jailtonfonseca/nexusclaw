@@ -8,20 +8,6 @@ echo "  NexusClaw - Orange Pi 3B Edition"
 echo "========================================"
 echo ""
 
-# Configurações de memória swap
-echo "Configurando memória virtual..."
-if [ ! -f /swapfile ]; then
-    fallocate -l 2G /swapfile || dd if=/dev/zero of=/swapfile bs=1M count=2048
-    chmod 600 /swapfile
-    mkswap /swapfile
-fi
-swapon /swapfile 2>/dev/null || true
-
-# Configurações de kernel para melhor performance
-echo "Otimizando kernel..."
-echo "never" > /sys/kernel/mm/transparent_hugepage/enabled 2>/dev/null || true
-echo "never" > /sys/kernel/mm/transparent_hugepage/defrag 2>/dev/null || true
-
 # Limita Python garbage collection para usar menos CPU
 export PYTHONGC=1
 

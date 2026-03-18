@@ -4,7 +4,7 @@
 # Framework principal (versões minimal)
 fastapi==0.109.2
 uvicorn[standard]==0.27.1
-pydantic==2.6.1
+pydantic==2.5.3
 pydantic-settings==2.1.0
 
 # Orquestração leve
@@ -34,3 +34,9 @@ cryptography==42.0.5
 # Desenvolvimento
 pytest==8.0.0
 pytest-asyncio==0.23.4
+
+# Missing Essentials for ARM64 
+sentence-transformers==2.4.0
+qdrant-client==1.7.3
+numpy>=1.26.4
+torch>=2.2.0 --index-url https://download.pytorch.org/whl/cpu
